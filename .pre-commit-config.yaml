@@ -1,0 +1,22 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-merge-conflict
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+    -   id: no-commit-to-branch
+        args: ['--branch', 'main', '--branch', 'development']
+-   repo: https://github.com/psf/black
+    rev: 21.12b0
+    hooks:
+    -   id: black
+        additional_dependencies: ['click==8.0.4']
+-   repo: local
+    hooks:
+      - id: unittests
+        name: run unit tests
+        entry: python -m unittest
+        language: system
+        pass_filenames: false
+        args: ["discover"]
